@@ -21,14 +21,3 @@ body:
     attributes:
       label: Additional Information
       description: Give us some additional information on the feature request like proposed solutions, links, screenshots, etc.
-
-contact_links:
-  - name: Issue guide
-    url: https://quarto.org/bug-reports.html
-    about: First time here or need a refresh? Please consult the issue guide before posting.
-  - name: Ask a question
-    url: https://github.com/orgs/coe-test-org/discussions/categories/q-a
-    about: Please ask and answer questions in our Discussion board
-  - name: Share an idea, a missing feature or anything else
-    url: https://github.com/orgs/coe-test-org/discussions/categories/ideas
-    about: Please give us any feedback in our Discussion board
