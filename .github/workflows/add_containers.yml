@@ -1,0 +1,27 @@
+name: Update Dev Container for Repos
+
+on: workflow_dispatch
+  # push:
+  #   branches:
+  #     - main
+
+jobs:
+  update-devcontainer:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Copy devcontainer.json
+        run: cp .devcontainer/devcontainer.json
+
+      - name: List repos in the org
+        run: |
+          org_name="coe-test-org"
+          token="$GITHUB_TOKEN"
+          repos=$(curl -s -H "Authorization: token $token" "https://api.github.com/orgs/$org_name/repos" | jq -r '.[].full_name')
+
+          for repo in $repos; do
+            curl -s -X PUT -H "Authorization: token $token" -d @.devcontainer/devcontainer.json "https://api.github.com/repos/$repo/contents/.devcontainer/devcontainer.json
+          done
