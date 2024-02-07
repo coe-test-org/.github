@@ -20,7 +20,7 @@ jobs:
         run: |
           org_name="coe-test-org"
           token="$GITHUB_TOKEN"
-          repos=$(curl -s -H "Authorization: token $token" "https://api.github.com/orgs/$org_name/repos" | jq -r '.[].name')
+          repos=$(curl -s -H "Authorization: token $token" "https://api.github.com/orgs/$org_name/repos" | grep -oP '"full_name": "\K[^"]+')
 
           for repo in $repos; do
             curl -s -X PUT -H "Authorization: token $token" -d @.devcontainer/devcontainer.json "https://api.github.com/repos/$repo/contents/.devcontainer/devcontainer.json
