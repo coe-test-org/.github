@@ -13,8 +13,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Copy devcontainer.json
-        run: cp $GITHUB_WORKSPACE/.devcontainer/devcontainer.json
+      # - name: Copy devcontainer.json
+      #   run: cp $GITHUB_WORKSPACE/.devcontainer/devcontainer.json
 
       - name: List repos in the org
         run: |
